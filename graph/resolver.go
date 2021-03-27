@@ -11,6 +11,7 @@ type Resolver struct {
 	users      []*model.User
 	lastTodoId int
 	lastUserId int
+	usersChan  chan *model.User
 }
 
 func NewResolver() *Resolver {
@@ -22,5 +23,6 @@ func NewResolver() *Resolver {
 		todos:      make([]*model.Todo, 0),
 		users:      users,
 		lastUserId: 3,
+		usersChan:  make(chan *model.User),
 	}
 }

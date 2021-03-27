@@ -52,7 +52,7 @@ func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
 }
 
 func (r *subscriptionResolver) UserAdded(ctx context.Context) (<-chan *model.User, error) {
-	panic(fmt.Errorf("not implemented"))
+	return r.usersChan, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
