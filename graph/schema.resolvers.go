@@ -56,7 +56,7 @@ func (r *subscriptionResolver) UserAdded(ctx context.Context) (<-chan *model.Use
 }
 
 func (r *todoResolver) TextLength(ctx context.Context, obj *model.Todo) (int, error) {
-	panic(fmt.Errorf("not implemented"))
+	return len(obj.Text), nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
