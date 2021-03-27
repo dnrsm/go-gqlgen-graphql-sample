@@ -34,7 +34,13 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 }
 
 func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*model.User, error) {
-	panic(fmt.Errorf("not implemented"))
+	newUser := &model.User{
+		ID:   strconv.Itoa((r.lastUserId)),
+		Name: input.Name,
+	}
+	r.users = append(r.users, newUser)
+	r.lastUserId++
+	return newUser, nil
 }
 
 func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
@@ -42,7 +48,7 @@ func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
 }
 
 func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
-	panic(fmt.Errorf("not implemented"))
+	return r.users, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
