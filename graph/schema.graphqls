@@ -32,3 +32,7 @@ type Mutation {
   createTodo(input: NewTodo!): Todo!
   createUser(input: NewUser!): User!
 }
+
+type Subscription {
+  userAdded: User!
+}
